@@ -77,4 +77,6 @@ group :test do
 end
 
 gem "devise"
+gem "pundit"
 gem "dotenv-rails", groups: [:development, :test]
+
