@@ -1,0 +1,10 @@
+<h1>Clothes</h1>
+
+<% @cloths.each do |cloth| %>
+  <ul>
+    <li><%= cloth.title %></li>
+    <li><%= cloth.description %></li>
+    <li>Brand: <%= cloth.brand %></li>
+    <li>Color: <%= cloth.color %></li>
+  </ul>
+<% end %>

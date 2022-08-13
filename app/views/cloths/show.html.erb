@@ -1,0 +1,13 @@
+<h1><%= @cloth.title %></h1>
+
+<p><%= @cloth.description %></p>
+<p>Brand: <%= @cloth.brand %></p>
+<p>Color: <%= @cloth.color %></p>
+
+<p><%= link_to "Edit", edit_cloth_path %></p>
+
+<p><%= link_to "Delete", cloth_path(@cloth),
+  data: {turbo_method: :delete, turbo_confirm: "Delete #{@cloth.title}?"}
+%></p>
+
+<p><%= link_to "Back", cloths_path %></p>
