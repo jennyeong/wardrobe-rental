@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
+require 'open-uri'
 require 'faker'
 
 puts "Cleaning database..."
@@ -28,6 +28,8 @@ puts "Creating cloths..."
     price: rand(1..20),
     user_id: 1
   )
+  file = URI.open(Faker::LoremFlickr.image(size: "300x400", search_terms: ['shirt']))
+  cloth.photos.attach(io: file, filename:"test.png", content_type: "image/png")
   cloth.save
 end
 
