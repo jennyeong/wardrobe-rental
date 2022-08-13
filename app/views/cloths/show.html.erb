@@ -4,8 +4,12 @@
 <p>Brand: <%= @cloth.brand %></p>
 <p>Color: <%= @cloth.color %></p>
 
-<p><%= link_to "Edit", edit_cloth_path %></p>
+<% if policy(@cloth).edit? %>
+  <%= link_to "Edit", edit_cloth_path %>
+<% end %>
 
+<% if policy(@cloth).destroy? %>
 <%= button_to "Delete", @cloth, method: :delete %>
+<% end %>
 
-<p><%= link_to "Back", cloths_path %></p>
+<%= link_to "Back to cloths", cloths_path %>
