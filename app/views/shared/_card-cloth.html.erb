@@ -1,0 +1,11 @@
+<div class="card-cloth">
+  <%= link_to cloth_path(@cloth) do %>
+    <%= cl_image_tag @cloth.photos.first.key, :transformation => {:dpr => "auto", :responsive => true, :width => "auto", :crop => "scale"} %>
+    <div class="card-cloth-info" id="card-cloth-info">
+      <h2 id="cloth-title"><%= @cloth.title %></h2>
+      <p id="cloth-description"><%= @cloth.description %></p>
+      <p id="cloth-price">$<%= @cloth.price %>/day</p>
+    </div>
+  <% end %>
+  <%# To add bookmark button after bookmark controller is done as need to do if else to show bookmarked already or not %>
+</div>
