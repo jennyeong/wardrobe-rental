@@ -6,8 +6,6 @@
 
 <p><%= link_to "Edit", edit_cloth_path %></p>
 
-<p><%= link_to "Delete", cloth_path(@cloth),
-  data: {turbo_method: :delete, turbo_confirm: "Delete #{@cloth.title}?"}
-%></p>
+<%= button_to "Delete", @cloth, method: :delete %>
 
 <p><%= link_to "Back", cloths_path %></p>

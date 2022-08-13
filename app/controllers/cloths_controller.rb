@@ -26,11 +26,16 @@ class ClothsController < ApplicationController
   end
 
   def update
-
+    if @cloth.update(cloth_params)
+      redirect_to @cloth, notice: "Cloth was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
-
+    @cloth.destroy
+    redirect_to cloths_path, notice: "Restaurant was successfully destroyed."
   end
 
   private
@@ -40,6 +45,6 @@ class ClothsController < ApplicationController
   end
 
   def cloth_params
-    params.require(:cloth).permit(:title, :description, :category, :color, :brand, :start_date, :end_date)
+    params.require(:cloth).permit(:title, :description, :price, :category, :color, :brand, :start_date, :end_date)
   end
 end
