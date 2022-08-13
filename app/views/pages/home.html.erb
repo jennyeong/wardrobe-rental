@@ -1,14 +1,39 @@
-<div class="mx-0 px-0 text-center mb-5">
-  <h1 class="w-100"><b>Welcome to Wardrobe</b></h1>
+<div class="mx-0 px-0 text-center my-5 w-100">
+  <h1><b>Welcome to Wardrobe</b></h1>
   <h5>Your one stop rental platform</h3>
   <br>
-  <%= form_tag "/outfits", method: "GET" do %>
-    <%= label_tag :search_outfits %>
+  <%= form_tag "/cloths", method: "GET" do %>
     <%= text_field_tag :search_outfits, params[:search_outfits] %>
-    <%= submit_tag "Search" %>
+    <%= submit_tag "Get outfitted today!" %>
   <% end %>
 </div>
-<div class="drops text-center">
-  <h3><b>Drops</b></h3>
-  <p>Place cloths cards here</p>
+<div class="drops text-center bg-light p-3">
+  <h3 ><b>Drops</b></h3>
+  <div class="cards d-flex justify-content-between mx-auto w-75 mt-3">
+    <% Cloth.all.limit(3).each do |item| %>
+      <div class="card d-inline-flex w-100 mx-2 rounded">
+        <div class="card-image p-3 rounded">
+          <%= cl_image_tag item.photos.first.key, crop: :fill %>
+        </div>
+        <b><%= item.title %></b><br>
+        <%= item.description %><br><br>
+        $<%= item.price %>/day
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="class most-wishlisted text-center p-3 bg-light">
+  <h3><b>Most Wishlisted</b></h3>
+  <div class="cards d-flex justify-content-between mx-auto w-75 mt-3">
+    <% Cloth.where(category: "Office").limit(3).each do |item| %>
+      <div class="card d-inline-flex w-100 mx-2">
+        <div class="card-image p-3 rounded">
+          <%= cl_image_tag item.photos.first.key, crop: :fill %>
+        </div>
+        <b><%= item.title %></b><br>
+        <%= item.description %><br><br>
+        $<%= item.price %>/day
+      </div>
+    <% end %>
+  </div>
 </div>
