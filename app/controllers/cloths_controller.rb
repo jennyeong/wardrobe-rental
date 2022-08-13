@@ -16,7 +16,7 @@ class ClothsController < ApplicationController
 
   def create
     @cloth = Cloth.new(cloth_params)
-    @cloth.user = current_user
+    @cloth.user_id = current_user.id
     authorize @cloth
     if @cloth.save
       redirect_to @cloth, notice: "Cloth was successfully created."
@@ -25,7 +25,12 @@ class ClothsController < ApplicationController
     end
   end
 
+  def edit
+    authorize @cloth
+  end
+
   def update
+    authorize @cloth
     if @cloth.update(cloth_params)
       redirect_to @cloth, notice: "Cloth was successfully updated."
     else
@@ -34,6 +39,7 @@ class ClothsController < ApplicationController
   end
 
   def destroy
+    authorize @cloth
     @cloth.destroy
     redirect_to cloths_path, notice: "Restaurant was successfully destroyed."
   end

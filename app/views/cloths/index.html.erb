@@ -2,7 +2,6 @@
 
 <% @cloths.each do |cloth| %>
   <ul>
-    <li><%= cloth.id %></li>
     <li><%= cloth.title %></li>
     <li>$<%= cloth.price %></li>
     <li><%= cloth.description %></li>
@@ -10,3 +9,5 @@
     <li>Color: <%= cloth.color %></li>
   </ul>
 <% end %>
+
+<%= link_to "New cloth", new_cloth_path if policy(Cloth).new? %>
