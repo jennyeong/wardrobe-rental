@@ -16,7 +16,7 @@ class ClothsController < ApplicationController
 
   def create
     @cloth = Cloth.new(cloth_params)
-    @cloth.user_id = current_user.id
+    @cloth.user = current_user
     authorize @cloth
     if @cloth.save
       redirect_to @cloth, notice: "Cloth was successfully created."
