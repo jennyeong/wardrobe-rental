@@ -1,12 +1,28 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <%# <%= image_tag "wardrobe_logo.png" %>
+      <p class="mb-0"><b>wardrobe</b></p>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <div class="collapse navbar-collapse me-auto" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <%= link_to "Suits", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Costumes", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Post your closet", "#", class: "nav-link text-danger" %>
+          </li>
+
+      </ul>
+    </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
@@ -26,8 +42,11 @@
             </div>
           </li>
         <% else %>
+          <li class="nav-item mr-3">
+            <%= link_to ('<i class="fa-solid fa-magnifying-glass fa-xl"></i>').html_safe, cloths_path  %>
+          </li>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to ('<i class="fa-solid fa-user fa-xl"></i>').html_safe, new_user_session_path  %>
           </li>
         <% end %>
       </ul>
