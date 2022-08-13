@@ -51,6 +51,6 @@ class ClothsController < ApplicationController
   end
 
   def cloth_params
-    params.require(:cloth).permit(:title, :description, :price, :category, :color, :brand, :start_date, :end_date)
+    params.require(:cloth).permit(:title, :description, :price, :category, :color, :brand, :start_date, :end_date, photos: [])
   end
 end
