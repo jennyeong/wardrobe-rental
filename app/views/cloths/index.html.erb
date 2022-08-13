@@ -2,7 +2,9 @@
 
 <% @cloths.each do |cloth| %>
   <ul>
+    <li><%= cloth.id %></li>
     <li><%= cloth.title %></li>
+    <li>$<%= cloth.price %></li>
     <li><%= cloth.description %></li>
     <li>Brand: <%= cloth.brand %></li>
     <li>Color: <%= cloth.color %></li>
