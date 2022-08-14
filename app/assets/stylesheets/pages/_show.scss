@@ -1,0 +1,42 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .column {
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+
+      h2 {
+        font-size: 50px;
+        font-weight: bold;
+        padding-top: 25px;
+      }
+
+      .avatar {
+        width: auto;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .detail-card {
+        border: 1px solid black;
+        border-radius: 10px;
+        width: 45%;
+        text-align: center;
+        margin: 5px auto;
+        padding: 5px;
+
+        .detail-type {
+          opacity: 0.6;
+        }
+      }
+    }
+
+    img {
+      width: 648px;
+      height: 648px;
+    }
+  }
+}
