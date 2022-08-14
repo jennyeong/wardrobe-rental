@@ -1,0 +1,19 @@
+<% @cloth.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+
+<h1><%= @cloth.title %></h1>
+
+<p><%= @cloth.description %></p>
+<p>Brand: <%= @cloth.brand %></p>
+<p>Color: <%= @cloth.color %></p>
+
+<% if policy(@cloth).edit? %>
+  <%= link_to "Edit", edit_cloth_path %>
+<% end %>
+
+<% if policy(@cloth).destroy? %>
+<%= button_to "Delete", @cloth, method: :delete %>
+<% end %>
+
+<%= link_to "Back to cloths", cloths_path %>
