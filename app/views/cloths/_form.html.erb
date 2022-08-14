@@ -1,20 +1,22 @@
-<%= simple_form_for (@cloth) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div>
+  <%= simple_form_for (@cloth) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :price %>
-    <%= f.input :category %>
-    <%= f.input :color %>
-    <%= f.input :brand %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :price %>
+      <%= f.input :category %>
+      <%= f.input :color %>
+      <%= f.input :brand %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, 'Post your closet!' %>
+    </div>
+  <% end %>
+</div>
