@@ -1,19 +1,74 @@
-<% @cloth.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<div class="container">
+  <div class="column">
+    <div class="row">
+      <div class="product-img">
+        <%= cl_image_tag @cloth.photos.first.key %>
+      </div>
+    </div>
+  </div>
 
-<h1><%= @cloth.title %></h1>
+  <div class="column">
+    <div class="row">
+      <h2><%= @cloth.title %></h2>
+      <p><%= @cloth.description %></p>
+    </div>
 
-<p><%= @cloth.description %></p>
-<p>Brand: <%= @cloth.brand %></p>
-<p>Color: <%= @cloth.color %></p>
+    <div class="row">
+      <div class="detail-avatar">
+        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar" alt="Avatar">
+        <p>by <%= @cloth.user.username %></p>
+      </div>
+    </div>
 
-<% if policy(@cloth).edit? %>
-  <%= link_to "Edit", edit_cloth_path %>
-<% end %>
+    <div class="row">
+      <div class="detail-card">
+        <div class="detail-type">
+          <span>Brand</span>
+        </div>
+        <div class="detail-value">
+          <span><%= @cloth.brand %></span>
+        </div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-type">
+          <span>Color</span>
+        </div>
+        <div class="detail-value">
+          <span><%= @cloth.color %></span>
+        </div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-type">
+          <span>Size</span>
+        </div>
+        <div class="detail-value">
+          <span><%= @cloth.size %></span>
+        </div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-type">
+          <span>Category</span>
+        </div>
+        <div class="detail-value">
+          <span><%= @cloth.category %></span>
+        </div>
+      </div>
+    </div>
 
-<% if policy(@cloth).destroy? %>
-<%= button_to "Delete", @cloth, method: :delete %>
-<% end %>
+    <div class="row booking">
+      <h3>$<%= @cloth.price %>/day</h3>
+      <%= render "bookingform", cloth: @cloth %>
+    </div>
+  </div>
+</div>
 
-<%= link_to "Back to cloths", cloths_path %>
+<hr>
+
+<div class="most-wishlisted text-center p-3 bg-light pb-0 m-0">  <h3 class="m-0"><b>More from <%= @cloth.user.username %></b></h3>
+    <%# <% @cloths.each do |cloth| %> %>
+    <%# <% @cloth = cloth %> %>
+    <%# <div class="d-inline-flex justify-content-between"> %>
+      <%# <%= render "shared/card-cloth", object: @cloth %> %>
+    <%# </div> %>
+  <%# <% end %> %>
+</div>

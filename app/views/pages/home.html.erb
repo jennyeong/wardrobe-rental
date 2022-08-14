@@ -7,33 +7,21 @@
     <%= submit_tag "Get outfitted today!" %>
   <% end %>
 </div>
-<div class="drops text-center bg-light p-3">
-  <h3 ><b>Drops</b></h3>
-  <div class="cards d-flex justify-content-between mx-auto w-75 mt-3">
-    <% Cloth.all.limit(3).each do |item| %>
-      <div class="card d-inline-flex w-100 mx-2 rounded">
-        <div class="card-image p-3 rounded">
-          <%= cl_image_tag item.photos.first.key, crop: :fill %>
-        </div>
-        <b><%= item.title %></b><br>
-        <%= item.description %><br><br>
-        $<%= item.price %>/day
-      </div>
-    <% end %>
-  </div>
+<div class="drops text-center bg-light p-3 pb-0 m-0">
+  <h3 class="m-0"><b>Drops</b></h3>
+  <% @cloths.each do |cloth| %>
+    <% @cloth = cloth %>
+    <div class="d-inline-flex justify-content-between">
+      <%= render "shared/card-cloth", object: @cloth %>
+    </div>
+  <% end %>
 </div>
-<div class="class most-wishlisted text-center p-3 bg-light">
-  <h3><b>Most Wishlisted</b></h3>
-  <div class="cards d-flex justify-content-between mx-auto w-75 mt-3">
-    <% Cloth.where(category: "Office").limit(3).each do |item| %>
-      <div class="card d-inline-flex w-100 mx-2">
-        <div class="card-image p-3 rounded">
-          <%= cl_image_tag item.photos.first.key, crop: :fill %>
-        </div>
-        <b><%= item.title %></b><br>
-        <%= item.description %><br><br>
-        $<%= item.price %>/day
-      </div>
-    <% end %>
-  </div>
+<div class="most-wishlisted text-center p-3 bg-light pb-0 m-0">
+  <h3 class="m-0"><b>Most Wishlisted</b></h3>
+  <% @cloths_wishlisted.each do |cloth| %>
+    <% @cloth = cloth %>
+    <div class="d-inline-flex justify-content-between">
+      <%= render "shared/card-cloth", object: @cloth %>
+    </div>
+  <% end %>
 </div>

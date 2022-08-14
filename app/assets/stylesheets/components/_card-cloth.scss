@@ -1,0 +1,35 @@
+.card-cloth {
+  border-style: solid;
+  border-radius: 3rem;
+  width: 28rem;
+  height: 38rem;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+#cloth-title {
+  color: black;
+  font-weight: bold;
+  padding: 1rem;
+  margin: 0;
+}
+
+#cloth-description {
+  color: rgb(69, 68, 68);
+  margin: 0;
+  padding: 0.5rem;
+}
+
+#cloth-price {
+  color: #54BAB9;
+  text-decoration: solid;
+  font-size: large;
+  font-weight: bold;
+  margin: 0;
+  padding: 0.5rem;
+}

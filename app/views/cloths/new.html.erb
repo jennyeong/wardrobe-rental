@@ -1,5 +1,10 @@
-<h3>Create a new cloth</h3>
-
-<%= render "form", cloth: @cloth %>
-
-<p><%= link_to "Back", cloths_path %></p>
+<div class="justify-content-around mx-0 d-flex">
+  <div class="section align-self-center">
+    <p><b>SEE WHAT'S POSSIBLE.</b></p>
+    <h1>Earn up to <b style="color: red">$500</b><br> a month
+    renting your closet.</h1>
+  </div>
+  <div class="form">
+    <%= render "form", cloth: @cloth %>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand" do %>
       <p class="mb-0"><b>wardrobe</b></p>
@@ -17,7 +17,7 @@
             <%= link_to "Office", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Post your closet", "#", class: "nav-link text-danger" %>
+            <%= link_to "Post your closet", "/cloths/new", class: "nav-link text-danger" %>
           </li>
 
       </ul>
@@ -26,8 +26,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item mr-3 align-middle">
-            <%= link_to ('<i class="fa-solid fa-magnifying-glass fa-xl align-middle"></i>').html_safe, cloths_path  %>
+          <li class="nav-item mr-3 align-middle pt-2">
+            <%= link_to ('<i class="fa-solid fa-magnifying-glass fa-xl"></i>').html_safe, cloths_path  %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -48,4 +48,4 @@
       </ul>
     </div>
   </div>
-</div>
+</nav>
