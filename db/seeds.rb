@@ -12,7 +12,7 @@ puts "Cleaning database..."
 Cloth.destroy_all
 
 puts "Creating cloths..."
-10.times do
+15.times do
   cloth = Cloth.new(
     title: Faker::Lorem.word,
     description: Faker::Lorem.paragraph,
@@ -26,7 +26,8 @@ puts "Creating cloths..."
     "end_date(2i)"=>"12",
     "end_date(3i)"=>"25",
     price: rand(1..20),
-    user_id: 1
+    size: ["XS", "S", "M", "L", "XL"].sample,
+    user_id: [1, 2].sample
   )
   file = URI.open(Faker::LoremFlickr.image(size: "300x400", search_terms: ['shirt']))
   cloth.photos.attach(io: file, filename:"test.png", content_type: "image/png")

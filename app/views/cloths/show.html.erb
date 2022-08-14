@@ -1,6 +1,10 @@
 <div class="container">
   <div class="column">
-    <img src="https://d2uxsly3gwvlvo.cloudfront.net/uploads/photo/image/43295/IMG_9264.png">
+    <div class="row">
+      <div class="product-img">
+        <%= cl_image_tag @cloth.photos.first.key %>
+      </div>
+    </div>
   </div>
 
   <div class="column">
@@ -38,7 +42,7 @@
           <span>Size</span>
         </div>
         <div class="detail-value">
-          <span><%=  %></span>
+          <span><%= @cloth.size %></span>
         </div>
       </div>
       <div class="detail-card">
@@ -55,7 +59,16 @@
       <h3>$<%= @cloth.price %>/day</h3>
       <%= render "bookingform", cloth: @cloth %>
     </div>
-
-
   </div>
+</div>
+
+<hr>
+
+<div class="most-wishlisted text-center p-3 bg-light pb-0 m-0">  <h3 class="m-0"><b>More from <%= @cloth.user.username %></b></h3>
+    <%# <% @cloths.each do |cloth| %> %>
+    <%# <% @cloth = cloth %> %>
+    <%# <div class="d-inline-flex justify-content-between"> %>
+      <%# <%= render "shared/card-cloth", object: @cloth %> %>
+    <%# </div> %>
+  <%# <% end %> %>
 </div>
