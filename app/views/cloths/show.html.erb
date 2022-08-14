@@ -57,7 +57,11 @@
 
     <div class="row booking">
       <h3>$<%= @cloth.price %>/day</h3>
-      <%= render "bookingform", cloth: @cloth %>
+      <%= render "dateform", cloth: @cloth %>
+    </div>
+    <div>
+      <%= link_to 'Edit this cloth', edit_cloth_path(@cloth), class: "btn btn-ghost" if policy(@cloth).edit? %>
+      <%= link_to 'Rent this cloth', new_cloth_booking_path(@cloth), class: "btn btn-ghost" if @rentee %>
     </div>
   </div>
 </div>

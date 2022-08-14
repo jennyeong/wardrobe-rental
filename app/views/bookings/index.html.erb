@@ -1,0 +1,13 @@
+<h1>Your rent requests</h1>
+
+<ol>
+  <% @bookings.each do |booking| %>
+    <li><%= booking.cloth.title %> <%= booking.rent_duration %> days, $<%= booking.total_cost %>, Owner approved: <%= booking.rent_approved %>
+      <%= link_to "Edit", edit_cloth_booking_path(booking.cloth, booking)%>
+      <%= link_to "Cancel",
+                booking_path(booking),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+              %>
+    </li>
+  <% end %>
+</ol>

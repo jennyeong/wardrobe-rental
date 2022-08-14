@@ -11,5 +11,4 @@ class User < ApplicationRecord
   # def rented_cloths
   #   joins(:bookings).where(rentee_id: self)
   # end
-
 end

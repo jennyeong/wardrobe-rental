@@ -5,6 +5,7 @@
   <% end %>
 </div>
 
+<%= link_to "Add a new cloth", new_cloth_path if policy(Cloth).new? %>
 <div class="text-center">
   <% @cloths.each do |cloth| %>
     <% @cloth = cloth %>

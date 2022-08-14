@@ -6,6 +6,7 @@ class ClothsController < ApplicationController
   end
 
   def show
+    @rentee = rentee?
     authorize @cloth
   end
 
@@ -19,7 +20,7 @@ class ClothsController < ApplicationController
     @cloth.user = current_user
     authorize @cloth
     if @cloth.save
-      redirect_to @cloth, notice: "Cloth was successfully created."
+      redirect_to cloth_path(@cloth), notice: "Cloth was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +33,7 @@ class ClothsController < ApplicationController
   def update
     authorize @cloth
     if @cloth.update(cloth_params)
-      redirect_to @cloth, notice: "Cloth was successfully updated."
+      redirect_to cloth_path(@cloth), notice: "Cloth was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,7 +42,7 @@ class ClothsController < ApplicationController
   def destroy
     authorize @cloth
     @cloth.destroy
-    redirect_to cloths_path, notice: "Restaurant was successfully destroyed."
+    redirect_to cloths_path, status: :see_other, notice: "Cloth was successfully deleted."
   end
 
   private
@@ -52,5 +53,9 @@ class ClothsController < ApplicationController
 
   def cloth_params
     params.require(:cloth).permit(:title, :description, :price, :category, :size, :color, :brand, :start_date, :end_date, photos: [])
+  end
+
+  def rentee?
+    @cloth.user != current_user
   end
 end
