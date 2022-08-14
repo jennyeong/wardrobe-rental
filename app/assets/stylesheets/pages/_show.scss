@@ -1,3 +1,9 @@
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  padding: 0;
+}
+
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -7,17 +13,34 @@
     .row {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      padding: 5px;
+      margin: auto;
 
       h2 {
         font-size: 50px;
         font-weight: bold;
-        padding-top: 25px;
+        padding: 25px 12px;
       }
 
-      .avatar {
-        width: auto;
-        height: 40px;
-        border-radius: 50%;
+      p {
+        margin-bottom: 0;
+      }
+
+      .detail-avatar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .avatar {
+          width: auto;
+          height: 40px;
+          border-radius: 50%;
+        }
+
+        p {
+          margin-bottom: 0;
+        }
       }
 
       .detail-card {
@@ -32,6 +55,24 @@
           opacity: 0.6;
         }
       }
+
+      .date-card {
+        border: 1px solid black;
+        border-radius: 10px;
+        text-align: center;
+        margin: 10px auto;
+        padding: 5px;
+
+        .date-type {
+          opacity: 0.6;
+        }
+      }
+    }
+
+    .booking {
+      background-color: white;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
     }
 
     img {

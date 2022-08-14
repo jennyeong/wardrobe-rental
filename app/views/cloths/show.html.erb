@@ -10,8 +10,10 @@
     </div>
 
     <div class="row">
-      <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar" alt="Avatar">
-      <p><%= @cloth.user.username %></p>
+      <div class="detail-avatar">
+        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar" alt="Avatar">
+        <p>by <%= @cloth.user.username %></p>
+      </div>
     </div>
 
     <div class="row">
@@ -48,5 +50,12 @@
         </div>
       </div>
     </div>
+
+    <div class="row booking">
+      <h3>$<%= @cloth.price %>/day</h3>
+      <%= render "bookingform", cloth: @cloth %>
+    </div>
+
+
   </div>
 </div>
