@@ -1,0 +1,19 @@
+.login-image {
+  background-image: url("Login-image.jpg");
+  background-size: cover;
+  min-height: 60rem;
+}
+
+.login-form {
+  padding: 8rem;
+
+  .btn {
+    background-color: #54BAB9;
+    border-radius: 0.5rem;
+  }
+
+  .sign-up {
+    padding: 1rem;
+    text-align: center;
+  }
+}
