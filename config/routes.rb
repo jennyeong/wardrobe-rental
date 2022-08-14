@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :cloths do
     resources :bookings, only: [:new, :create, :edit, :update]
   end
-  resources :bookings, only: [:destroyed]
+  resources :bookings, only: [:index, :destroy]
 end

@@ -1,13 +1,13 @@
-<h1>Bookings</h1>
+<h1>Your rent requests</h1>
 
-<% @cloths.each do |cloth| %>
-  <ul>
-    <li><%= cloth.title %></li>
-    <li>$<%= cloth.price %></li>
-    <li><%= cloth.description %></li>
-    <li>Brand: <%= cloth.brand %></li>
-    <li>Color: <%= cloth.color %></li>
-  </ul>
-<% end %>
-
-<%= link_to "New cloth", new_cloth_path if policy(Cloth).new? %>
+<ol>
+  <% @bookings.each do |booking| %>
+    <li><%= booking.cloth.title %> <%= booking.rent_duration %> days, $<%= booking.total_cost %>, Owner approved: <%= booking.rent_approved %>
+      <%= link_to "Edit", edit_cloth_booking_path(booking.cloth, booking)%>
+      <%= link_to "Cancel",
+                booking_path(booking),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+              %>
+    </li>
+  <% end %>
+</ol>
