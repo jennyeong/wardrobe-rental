@@ -1,0 +1,26 @@
+<%= simple_form_for (@cloth) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="date-card">
+    <div class="date-type">
+      <span>Start Date</span>
+    </div>
+    <div class="date-value">
+      <%= f.date_select :start_date %>
+    </div>
+  </div>
+
+  <div class="date-card">
+    <div class="date-type">
+      <span>End Date</span>
+    </div>
+    <div class="date-value">
+      <%= f.date_select :end_date %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

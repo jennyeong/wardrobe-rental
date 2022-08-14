@@ -1,19 +1,61 @@
-<% @cloth.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<div class="container">
+  <div class="column">
+    <img src="https://d2uxsly3gwvlvo.cloudfront.net/uploads/photo/image/43295/IMG_9264.png">
+  </div>
 
-<h1><%= @cloth.title %></h1>
+  <div class="column">
+    <div class="row">
+      <h2><%= @cloth.title %></h2>
+      <p><%= @cloth.description %></p>
+    </div>
 
-<p><%= @cloth.description %></p>
-<p>Brand: <%= @cloth.brand %></p>
-<p>Color: <%= @cloth.color %></p>
+    <div class="row">
+      <div class="detail-avatar">
+        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar" alt="Avatar">
+        <p>by <%= @cloth.user.username %></p>
+      </div>
+    </div>
 
-<% if policy(@cloth).edit? %>
-  <%= link_to "Edit", edit_cloth_path %>
-<% end %>
+    <div class="row">
+      <div class="detail-card">
+        <div class="detail-type">
+          <span>Brand</span>
+        </div>
+        <div class="detail-value">
+          <span><%= @cloth.brand %></span>
+        </div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-type">
+          <span>Color</span>
+        </div>
+        <div class="detail-value">
+          <span><%= @cloth.color %></span>
+        </div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-type">
+          <span>Size</span>
+        </div>
+        <div class="detail-value">
+          <span><%=  %></span>
+        </div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-type">
+          <span>Category</span>
+        </div>
+        <div class="detail-value">
+          <span><%= @cloth.category %></span>
+        </div>
+      </div>
+    </div>
 
-<% if policy(@cloth).destroy? %>
-<%= button_to "Delete", @cloth, method: :delete %>
-<% end %>
+    <div class="row booking">
+      <h3>$<%= @cloth.price %>/day</h3>
+      <%= render "bookingform", cloth: @cloth %>
+    </div>
 
-<%= link_to "Back to cloths", cloths_path %>
+
+  </div>
+</div>
