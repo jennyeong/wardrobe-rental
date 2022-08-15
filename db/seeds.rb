@@ -10,6 +10,7 @@ require 'faker'
 
 puts "Cleaning database..."
 Cloth.destroy_all
+Booking.destroy_all
 
 puts "Creating cloths..."
 15.times do
@@ -29,7 +30,7 @@ puts "Creating cloths..."
     size: ["XS", "S", "M", "L", "XL"].sample,
     user_id: [1, 2].sample
   )
-  file = URI.open(Faker::LoremFlickr.image(size: "300x400", search_terms: ['shirt']))
+  file = URI.open(Faker::LoremFlickr.image(size: "400x400", search_terms: ['dress', 'suits']))
   cloth.photos.attach(io: file, filename:"test.png", content_type: "image/png")
   cloth.save
 end
