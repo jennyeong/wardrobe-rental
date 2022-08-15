@@ -8,6 +8,8 @@ class ClothsController < ApplicationController
   def show
     @rentee = rentee?
     authorize @cloth
+    @cloths = Cloth.where(user_id: current_user.id)
+    @cloths = @cloths.select{ |cloth| cloth.id != @cloth.id}
   end
 
   def new

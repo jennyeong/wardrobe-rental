@@ -61,6 +61,7 @@
     </div>
     <div>
       <%= link_to 'Edit this cloth', edit_cloth_path(@cloth), class: "btn btn-ghost" if policy(@cloth).edit? %>
+      <%= link_to 'Delete this cloth', cloth_path(@cloth), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-ghost" if policy(@cloth).destroy? %>
       <%= link_to 'Rent this cloth', new_cloth_booking_path(@cloth), class: "btn btn-ghost" if @rentee %>
     </div>
   </div>
@@ -69,10 +70,11 @@
 <hr>
 
 <div class="most-wishlisted text-center p-3 bg-light pb-0 m-0">  <h3 class="m-0"><b>More from <%= @cloth.user.username %></b></h3>
-    <%# <% @cloths.each do |cloth| %> %>
-    <%# <% @cloth = cloth %> %>
-    <%# <div class="d-inline-flex justify-content-between"> %>
-      <%# <%= render "shared/card-cloth", object: @cloth %> %>
-    <%# </div> %>
-  <%# <% end %> %>
+    <% @cloths.each do |cloth| %>
+    <% @cloth = cloth %>
+    <div class="d-inline-flex justify-content-between">
+      <%= render "shared/card-cloth", object: @cloth %>
+    </div>
+  <% end %>
+
 </div>
