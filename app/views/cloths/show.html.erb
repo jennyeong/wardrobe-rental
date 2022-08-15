@@ -69,10 +69,11 @@
 <hr>
 
 <div class="most-wishlisted text-center p-3 bg-light pb-0 m-0">  <h3 class="m-0"><b>More from <%= @cloth.user.username %></b></h3>
-    <%# <% @cloths.each do |cloth| %> %>
-    <%# <% @cloth = cloth %> %>
-    <%# <div class="d-inline-flex justify-content-between"> %>
-      <%# <%= render "shared/card-cloth", object: @cloth %> %>
-    <%# </div> %>
-  <%# <% end %> %>
+    <% @cloths.each do |cloth| %>
+    <% @cloth = cloth %>
+    <div class="d-inline-flex justify-content-between">
+      <%= render "shared/card-cloth", object: @cloth %>
+    </div>
+  <% end %>
+
 </div>
