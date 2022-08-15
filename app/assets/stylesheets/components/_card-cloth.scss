@@ -6,6 +6,7 @@
   padding: 1rem;
   margin: 1rem;
   background-color: white;
+  align-items: center;
 }
 
 a {
@@ -23,6 +24,7 @@ a {
   color: rgb(69, 68, 68);
   margin: 0;
   padding: 0.5rem;
+  overflow: hidden;
 }
 
 #cloth-price {
@@ -32,4 +34,5 @@ a {
   font-weight: bold;
   margin: 0;
   padding: 0.5rem;
+  align-self: flex-end;
 }
