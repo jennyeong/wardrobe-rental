@@ -1,8 +1,9 @@
 class BookingsController < ApplicationController
-  before_action :set_cloth, only: %i[new create edit update]
+  before_action :set_cloth, only: %i[new create edit update approve]
 
   def index
-    @bookings = policy_scope(Booking)
+    @rentee_bookings = policy_scope(Booking)
+    @renter_bookings = Booking.where(renter_id: current_user.id).order(updated_at: :desc)
   end
 
   def new
@@ -33,6 +34,18 @@ class BookingsController < ApplicationController
     set_booking
     if @booking.save
       redirect_to bookings_path, notice: "Rent request was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def approve
+    @booking = Booking.find_by(cloth_id: params[:cloth_id])
+    authorize @booking
+    @booking.rent_approved = true
+    @cloth.rented = true
+    if @booking.save && @cloth.save
+      redirect_to bookings_path, notice: "Rent request was successfully approved."
     else
       render :edit, status: :unprocessable_entity
     end

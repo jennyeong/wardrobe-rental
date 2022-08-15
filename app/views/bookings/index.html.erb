@@ -1,11 +1,27 @@
-<h1>Your rent requests</h1>
+<h1>My renting requests</h1>
 
 <ol>
-  <% @bookings.each do |booking| %>
-    <li><%= booking.cloth.title %> <%= booking.rent_duration %> days, $<%= booking.total_cost %>, Owner approved: <%= booking.rent_approved %>
-      <%= link_to "Edit", edit_cloth_booking_path(booking.cloth, booking)%>
+  <% @rentee_bookings.each do |rentee_booking| %>
+    <li><%= rentee_booking.cloth.title %> <%= rentee_booking.rent_duration %> days, $<%= rentee_booking.total_cost %>, Owner approved: <%= rentee_booking.rent_approved %>
+      <%= link_to "Edit", edit_cloth_booking_path(rentee_booking.cloth, rentee_booking)%>
       <%= link_to "Cancel",
-                booking_path(booking),
+                booking_path(rentee_booking),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+              %>
+    </li>
+  <% end %>
+</ol>
+
+<br>
+
+<h1>Received rentees' requests</h1>
+
+<ol>
+  <% @renter_bookings.each do |renter_booking| %>
+    <li><%= renter_booking.cloth.title %> <%= renter_booking.rent_duration %> days, $<%= renter_booking.total_cost %>, Owner approved: <%= renter_booking.rent_approved %>
+      <%= link_to "Approve", approve_cloth_booking_path(renter_booking.cloth, renter_booking), data: {"turbo-method": :patch}  %>
+      <%= link_to "Cancel",
+                booking_path(renter_booking),
                 data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
               %>
     </li>
