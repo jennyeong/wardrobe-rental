@@ -34,8 +34,4 @@ puts "Creating cloths..."
   cloth.save
 end
 
-puts "Creating bookings..."
-Booking.create(renter_id: User.first.id, rentee_id: User.last.id, cloth_id: Cloth.first.id, total_cost: 20, rent_duration: 3)
-Booking.create(renter_id: User.first.id, rentee_id: User.last.id, cloth_id: Cloth.last.id, total_cost: 50, rent_duration: 10)
-
 puts "Finished!"

@@ -17,6 +17,10 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.rentee == user
+    true
+  end
+
+  def approve?
+    record.renter == user
   end
 end
