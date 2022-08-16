@@ -1,27 +1,23 @@
-<h2>My renting requests</h2>
+<div class="mx-0 px-0 text-center my-5 w-100">
+  <div class="drops text-center bg-light p-3 pb-0 m-0">
+    <h3 class="m-0"><b>My renting requests</b></h3>
 
-<ol>
-  <% @rentee_bookings.each do |rentee_booking| %>
-    <li><%= rentee_booking.cloth.title %> <%= rentee_booking.rent_duration %> days, $<%= rentee_booking.total_cost %>, Owner approved: <%= rentee_booking.rent_approved %>
-      <%= link_to "Edit", edit_cloth_booking_path(rentee_booking.cloth, rentee_booking), class: "btn" if rentee_booking.rent_approved == false %>
-      <%= link_to "Cancel",
-                booking_path(rentee_booking),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" if rentee_booking.rent_approved == false %>
-    </li>
-  <% end %>
-</ol>
+    <% @rentee_bookings.each do |rentee_booking| %>
+      <% @booking = rentee_booking %>
+      <div class="d-inline-flex justify-content-between">
+        <%= render "shared/card-rentee", object: @booking %>
+      </div>
+    <% end %>
+  </div>
+  <hr style="width:80%; margin-left:10% !important; margin-right:10% !important;" />
+  <div class="drops text-center bg-light p-3 pb-0 m-0">
+    <h3 class="m-0"><b>Received renting requests</b></h3>
 
-<br>
-
-<h2>Received renting requests</h2>
-
-<ol>
-  <% @renter_bookings.each do |renter_booking| %>
-    <li><%= renter_booking.cloth.title %> <%= renter_booking.rent_duration %> days, $<%= renter_booking.total_cost %>, Owner approved: <%= renter_booking.rent_approved %>
-      <%= link_to "Approve", approve_cloth_booking_path(renter_booking.cloth, renter_booking), data: {turbo_method: :patch}, class: "btn" if renter_booking.rent_approved == false %>
-      <%= link_to "Cancel",
-                booking_path(renter_booking),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" if renter_booking.rent_approved == false %>
-    </li>
-  <% end %>
-</ol>
+      <% @renter_bookings.each do |renter_booking| %>
+        <% @booking = renter_booking %>
+        <div class="d-inline-flex justify-content-between">
+          <%= render "shared/card-renter", object: @booking %>
+        </div>
+      <% end %>
+  </div>
+</div>

@@ -8,8 +8,9 @@ class ClothsController < ApplicationController
   def show
     @rentee = rentee?
     authorize @cloth
-    @cloths = Cloth.where(user_id: current_user.id)
-    @cloths = @cloths.select{ |cloth| cloth.id != @cloth.id}
+    @all_cloths = Cloth.where(user_id: @cloth.user_id)
+    @cloths = @all_cloths.reject { |cloth| cloth.id == @cloth.id }
+    @cloths = @cloths[0..2]
   end
 
   def new
