@@ -60,9 +60,9 @@
       <%= render "dateform", cloth: @cloth %>
     </div>
     <div>
-      <%= link_to 'Edit this cloth', edit_cloth_path(@cloth), class: "btn btn-ghost" if policy(@cloth).edit? %>
-      <%= link_to 'Delete this cloth', cloth_path(@cloth), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-ghost" if policy(@cloth).destroy? %>
-      <%= link_to 'Rent this cloth', new_cloth_booking_path(@cloth), class: "btn btn-ghost" if @rentee %>
+      <%= link_to 'Edit this cloth', edit_cloth_path(@cloth), class: "btn btn-ghost" if policy(@cloth).edit? && @cloth.rented == false %>
+      <%= link_to 'Delete this cloth', cloth_path(@cloth), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-ghost" if policy(@cloth).destroy? && @cloth.rented == false %>
+      <%= link_to 'Rent this cloth', new_cloth_booking_path(@cloth), class: "btn btn-ghost" if @rentee && @cloth.rented == false %>
     </div>
   </div>
 </div>
