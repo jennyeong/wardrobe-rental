@@ -7,7 +7,7 @@
   <div class="card-cloth-info d-flex flex-column">
     <h2 id="cloth-title"><%= @booking.cloth.title %></h2>
     <p><%= @booking.rent_duration %> days, $<%= @booking.total_cost %> in total</p>
-    <div class="d-inline-flex justify-content-between">
+    <div class="d-inline-flex justify-content-center">
       <%= link_to "Approve", approve_cloth_booking_path(@booking.cloth, @booking), data: {turbo_method: :patch}, class: "btn" if @booking.rent_approved == false %>
       <%= link_to "Cancel",
           booking_path(@booking),

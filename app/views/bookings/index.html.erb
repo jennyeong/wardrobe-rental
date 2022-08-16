@@ -12,24 +12,6 @@
   <hr style="width:80%; margin-left:10% !important; margin-right:10% !important;" />
   <div class="drops text-center bg-light p-3 pb-0 m-0">
     <h3 class="m-0"><b>Received renting requests</b></h3>
-    
-<ol>
-  <% @rentee_bookings.each do |rentee_booking| %>
-    <li><%= rentee_booking.cloth.title %> <%= rentee_booking.rent_duration %> days, $<%= rentee_booking.total_cost %>, Owner approved: <%= rentee_booking.rent_approved %>
-      <%= link_to "Edit", edit_cloth_booking_path(rentee_booking.cloth, rentee_booking)%>
-      <%= link_to "Cancel",
-                booking_path(rentee_booking),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-              %>
-      <% if rentee_booking.review.present? %>
-        <%= link_to "Update your review", edit_booking_review_path(rentee_booking, rentee_booking.review) %>
-        <%= link_to "Delete your review", review_path(rentee_booking.review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      <% else %>
-        <%= link_to "Leave a review", new_booking_review_path(rentee_booking) %>
-      <% end %>
-    </li>
-  <% end %>
-</ol>
 
       <% @renter_bookings.each do |renter_booking| %>
         <% @booking = renter_booking %>

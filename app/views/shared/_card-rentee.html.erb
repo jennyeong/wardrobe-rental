@@ -7,11 +7,17 @@
   <div class="card-cloth-info d-flex flex-column">
     <h2 id="cloth-title"><%= @booking.cloth.title %></h2>
     <p><%= @booking.rent_duration %> days, $<%= @booking.total_cost %> in total</p>
-    <div class="d-inline-flex justify-content-between">
+    <div class="d-inline-flex justify-content-center">
       <%= link_to "Edit", edit_cloth_booking_path(@booking.cloth, @booking), class: "btn" if @booking.rent_approved == false %>
       <%= link_to "Cancel",
           booking_path(@booking),
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" if @booking.rent_approved == false %>
+      <% if @booking.review.present? %>
+        <%= link_to "Update review", edit_booking_review_path(@booking, @booking.review) %>
+        <%# <%= link_to "Delete review", review_path(@booking.review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" %>
+      <% else %>
+        <%= link_to "Leave a review", new_booking_review_path(@booking) %>
+      <% end %>
     </div>
   </div>
 
