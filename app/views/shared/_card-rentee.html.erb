@@ -13,10 +13,11 @@
           booking_path(@booking),
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" if @booking.rent_approved == false %>
       <% if @booking.review.present? %>
-        <%= link_to "Update review", edit_booking_review_path(@booking, @booking.review) %>
-        <%# <%= link_to "Delete review", review_path(@booking.review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" %>
+        <%= link_to "Update review", edit_booking_review_path(@booking, @booking.review), class: "btn" if @booking.rent_approved == true %>
+        <%# <%= link_to "Delete review", review_path(@booking.review),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" if @booking.rent_approved == true %>
       <% else %>
-        <%= link_to "Leave a review", new_booking_review_path(@booking) %>
+        <%= link_to "Leave a review", new_booking_review_path(@booking), class: "btn" if @booking.rent_approved == true %>
       <% end %>
     </div>
   </div>
