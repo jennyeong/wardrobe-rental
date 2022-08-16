@@ -9,4 +9,12 @@ class ReviewPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def update?
+    record.booking.rentee == user
+  end
+
+  def destroy?
+    record.booking.rentee == user
+  end
 end
