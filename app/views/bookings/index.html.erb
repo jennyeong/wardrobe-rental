@@ -8,6 +8,12 @@
                 booking_path(rentee_booking),
                 data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
               %>
+      <% if rentee_booking.review.present? %>
+        <%= link_to "Update your review", edit_booking_review_path(rentee_booking, rentee_booking.review) %>
+        <%= link_to "Delete your review", review_path(rentee_booking.review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <% else %>
+        <%= link_to "Leave a review", new_booking_review_path(rentee_booking) %>
+      <% end %>
     </li>
   <% end %>
 </ol>
