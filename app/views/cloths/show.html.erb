@@ -68,6 +68,18 @@
 </div>
 
  <hr style="width:80%; margin-left:10% !important; margin-right:10% !important;" />
+<div class="cloth-reviews h-100">
+  <h3 class="text-center"><b>Hear from others</b></h3>
+  <% @cloth.bookings.each do |booking| %>
+    <div class="card-review container d-flex">
+        <b><%= booking.rentee.username %></b> comments:<br>
+        <%= booking.review.comments %><br>
+        Rating: <%= booking.review.rating %>/5
+    </div>
+  <% end %>
+</div>
+
+ <hr style="width:80%; margin-left:10% !important; margin-right:10% !important;" />
 
 <div class="most-wishlisted text-center p-3 bg-light pb-0 m-0">  <h3 class="m-0"><b>More from <%= @cloth.user.username %></b></h3>
     <% @cloths.each do |cloth| %>
