@@ -5,9 +5,9 @@
       <%= cl_image_tag @cloth.photos.first.key, :transformation => {:width => 400, :height => 400, :crop => "pad", :radius => 25} %>
     </div>
     <div class="card-cloth-info d-flex flex-column">
-      <h2 id="cloth-title"><%= @cloth.title %></h2>
+      <h2 id="cloth-title"><%= @cloth.title %> <%= content_tag(:span, "Rented",  class: "badge badge-pill badge-success") if @cloth.rented %></h2>
       <p id="cloth-description"><%= @cloth.description %></p>
-      <p id="cloth-price">$<%= @cloth.price %>/day</p>
+      <p id= "cloth-price">$<%= @cloth.price %>/day</p>
     </div>
   <% end %>
   <%# To add bookmark button after bookmark controller is done as need to do if else to show bookmarked already or not %>
