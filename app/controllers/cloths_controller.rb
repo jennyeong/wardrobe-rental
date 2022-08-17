@@ -1,7 +1,7 @@
 class ClothsController < ApplicationController
   before_action :set_cloth, only: %i[show edit update destroy]
   def index
-    # @cloths = Cloth.all
+    @cloths = Cloth.all
     @cloths = policy_scope(Cloth)
   end
 
