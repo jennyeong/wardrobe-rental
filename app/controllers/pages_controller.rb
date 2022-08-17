@@ -5,6 +5,6 @@ class PagesController < ApplicationController
     # For Drops
     @cloths = Cloth.all.limit(3)
     # For Wishlisted
-    @cloths_wishlisted = Cloth.where(brand: "Louis Vuitton")
+    @cloths_wishlisted = Cloth.where(brand: "Louis Vuitton").limit(3)
   end
 end
