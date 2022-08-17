@@ -7,9 +7,9 @@
       <%= f.input :title %>
       <%= f.input :description %>
       <%= f.input :price %>
-      <%= f.input :category %>
+      <%= f.input :category, collection: ["Suits", "Office", "Sports", "Dress", "Casual"] %>
       <%= f.input :color %>
-      <%= f.input :size %>
+      <%= f.input :size, collection: ["XS", "S", "M", "L", "XL", "XXL"] %>
       <%= f.input :brand %>
       <%= f.input :start_date %>
       <%= f.input :end_date %>

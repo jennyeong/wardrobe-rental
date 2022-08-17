@@ -12,16 +12,15 @@ class BookmarksController < ApplicationController
     @bookmark.save
   end
 
-
   def destroy
     @cloth = @bookmark.cloth
     @bookmark.destroy
   end
 
   private
-    def set_bookmark
-      @bookmark = Bookmark.find(params[:id])
-      authorize @bookmark
-    end
 
+  def set_bookmark
+    @bookmark = Bookmark.find(params[:id])
+    authorize @bookmark
+  end
 end

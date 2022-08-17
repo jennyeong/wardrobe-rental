@@ -17,7 +17,7 @@ puts "Creating cloths..."
   cloth = Cloth.new(
     title: Faker::Lorem.word,
     description: Faker::Lorem.paragraph,
-    category: ["Dress", "Suit", "Office"].sample,
+    category: ["Suits", "Office", "Sports", "Dress", "Casual"].sample,
     color: Faker::Color.color_name,
     brand: ["Gucci", "Prada", "Louis Vuitton", "Hermes", "Chanel"].sample,
     "start_date(1i)"=>"2022",
@@ -27,7 +27,7 @@ puts "Creating cloths..."
     "end_date(2i)"=>"12",
     "end_date(3i)"=>"25",
     price: rand(1..20),
-    size: ["XS", "S", "M", "L", "XL"].sample,
+    size: ["XS", "S", "M", "L", "XL", "XXL"].sample,
     user_id: [1, 2].sample
   )
   file = URI.open(Faker::LoremFlickr.image(size: "400x400", search_terms: ['dress', 'suits']))
