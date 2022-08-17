@@ -57,7 +57,14 @@
 
     <div class="row booking">
       <h3>$<%= @cloth.price %>/day</h3>
-      <%= render "dateform", cloth: @cloth %>
+      <div class="date-card">
+        <div class="date-type">
+          <span>Available Period</span>
+        </div>
+        <div class="date-value">
+          <p>From <%= @cloth.start_date %> to <%= @cloth.end_date %></p>
+        </div>
+      </div>
     </div>
     <div>
       <%= link_to 'Edit this cloth', edit_cloth_path(@cloth), class: "btn btn-ghost" if policy(@cloth).edit? && @cloth.rented == false %>
@@ -72,9 +79,11 @@
   <h3 class="text-center"><b>Hear from others</b></h3>
   <% @cloth.bookings.each do |booking| %>
     <div class="card-review container d-flex">
-        <b><%= booking.rentee.username %></b> comments:<br>
+        <b><%= booking.rentee.username %></b>comments:<br>
         <%= booking.review.comments %><br>
-        Rating: <%= booking.review.rating %>/5
+        <% booking.review.rating.to_int.times do %>
+          <i class="fa-solid fa-star"></i>
+        <% end %>
     </div>
   <% end %>
 </div>
