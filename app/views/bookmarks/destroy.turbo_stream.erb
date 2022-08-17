@@ -1,0 +1,3 @@
+<%= turbo_stream.replace dom_id(@cloth) do %>
+  <%= render partial: "cloths/bookmark_link", locals: {cloth: @cloth, bookmark: nil} %>
+<% end %>

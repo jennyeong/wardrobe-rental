@@ -1,0 +1,11 @@
+<div class="mx-0 px-0 text-center my-5 w-100">
+  <div class="drops text-center bg-light p-3 pb-0 m-0">
+    <h3 class="m-0"><b>My bookmarks</b></h3>
+    <ul>
+      <% @bookmarks.each do |bookmark| %>
+        <li><%= link_to bookmark.cloth.title, bookmark.cloth %></li>
+      <% end %>
+    </ul>
+  </div>
+  <hr style="width:80%; margin-left:10% !important; margin-right:10% !important;" />
+</div>

@@ -27,6 +27,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item mr-3 align-middle pt-2">
+            <%= link_to ('<i class="fa-solid fa-bookmark fa-xl"></i>').html_safe, bookmarks_path  %>
             <%= link_to ('<i class="fa-solid fa-magnifying-glass fa-xl"></i>').html_safe, cloths_path  %>
           </li>
           <li class="nav-item dropdown">

@@ -11,4 +11,6 @@
     </div>
   <% end %>
   <%# To add bookmark button after bookmark controller is done as need to do if else to show bookmarked already or not %>
+  <% bookmark = @cloth.bookmarks.find_by(user_id: current_user.id) %>
+  <%= render partial: "cloths/bookmark_link", locals: {cloth: @cloth, bookmark: bookmark} %>
 </div>
