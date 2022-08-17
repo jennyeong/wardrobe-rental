@@ -9,7 +9,7 @@
 
   <div class="column">
     <div class="row">
-      <h2><%= @cloth.title %></h2>
+      <h2><%= @cloth.title %> <%= content_tag(:span, "Rented",  class: "badge badge-pill badge-success") if @cloth.rented %></h2>
       <p><%= @cloth.description %></p>
     </div>
 
@@ -67,7 +67,7 @@
   </div>
 </div>
 
-<hr>
+ <hr style="width:80%; margin-left:10% !important; margin-right:10% !important;" />
 
 <div class="most-wishlisted text-center p-3 bg-light pb-0 m-0">  <h3 class="m-0"><b>More from <%= @cloth.user.username %></b></h3>
     <% @cloths.each do |cloth| %>
