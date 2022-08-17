@@ -1,21 +1,21 @@
 <div class="card-cloth d-flex flex-column">
-
-  <div class="card-image">
-    <%= cl_image_tag @booking.cloth.photos.first.key, :transformation => {:width => 400, :height => 400, :crop => "pad", :radius => 25} %>
-  </div>
-
-  <div class="card-cloth-info d-flex flex-column">
-    <h2 id="cloth-title"><%= @booking.cloth.title %></h2>
-    <p><%= @booking.rent_duration %> days, $<%= @booking.total_cost %> in total</p>
-    <h4>
-      <%= content_tag(:span, "Approved",  class: "badge badge-pill badge-success") if @booking.rent_approved %>
-    </h4>
-    <div class="d-inline-flex justify-content-center">
-      <%= link_to "Approve", approve_cloth_booking_path(@booking.cloth, @booking), data: {turbo_method: :patch}, class: "btn" if @booking.rent_approved == false %>
-      <%= link_to "Cancel",
-          booking_path(@booking),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" if @booking.rent_approved == false %>
+  <%= link_to cloth_path(@booking.cloth) do %>
+    <div class="card-image">
+      <%= cl_image_tag @booking.cloth.photos.first.key, :transformation => {:width => 400, :height => 400, :crop => "pad", :radius => 25} %>
     </div>
-  </div>
 
+    <div class="card-cloth-info d-flex flex-column">
+      <h2 id="cloth-title"><%= @booking.cloth.title %></h2>
+      <p><%= @booking.rent_duration %> days, $<%= @booking.total_cost %> in total</p>
+      <h4>
+        <%= content_tag(:span, "Approved",  class: "badge badge-pill badge-success") if @booking.rent_approved %>
+      </h4>
+      <div class="d-inline-flex justify-content-center">
+        <%= link_to "Approve", approve_cloth_booking_path(@booking.cloth, @booking), data: {turbo_method: :patch}, class: "btn" if @booking.rent_approved == false %>
+        <%= link_to "Cancel",
+            booking_path(@booking),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" if @booking.rent_approved == false %>
+      </div>
+    </div>
+  <% end %>
 </div>
