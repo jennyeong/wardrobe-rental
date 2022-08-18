@@ -6,23 +6,23 @@
 
     <div class="card-cloth-info d-flex flex-column">
       <h2 id="cloth-title"><%= @booking.cloth.title %></h2>
-      <p><%= @booking.rent_duration %> days, $<%= @booking.total_cost %> in total</p>
+      <p>from <%= @booking.start_date %> to <%= @booking.end_date %>, $<%= @booking.total_cost %> in total</p>
       <h4>
-      <%= content_tag(:span, "Pending approval",  class: "badge badge-pill badge-primary") if @booking.rent_approved == false %>
+      <%= content_tag(:span, "Pending approval",  class: "badge badge-pill badge-primary") if @booking.rent_approved == false && @booking.cloth.rented == false %>
       <%= content_tag(:span, "Approved",  class: "badge badge-pill badge-success") if @booking.rent_approved %>
       </h4>
 
       <div class="d-inline-flex justify-content-center">
-        <%= link_to "Edit", edit_cloth_booking_path(@booking.cloth, @booking), class: "btn" if @booking.rent_approved == false %>
+        <%= link_to "Edit", edit_cloth_booking_path(@booking.cloth, @booking), class: "btn" if @booking.rent_approved == false && @booking.cloth.rented == false %>
         <%= link_to "Cancel",
             booking_path(@booking),
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" if @booking.rent_approved == false %>
         <% if @booking.review.present? %>
-          <%= link_to "Update review", edit_booking_review_path(@booking, @booking.review), class: "btn" if @booking.rent_approved == true %>
+          <%= link_to "Update review", edit_booking_review_path(@booking, @booking.review), class: "btn" if @booking.rent_approved %>
           <%# <%= link_to "Delete review", review_path(@booking.review),
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" if @booking.rent_approved == true %>
         <% else %>
-          <%= link_to "Leave a review", new_booking_review_path(@booking), class: "btn" if @booking.rent_approved == true %>
+          <%= link_to "Leave a review", new_booking_review_path(@booking), class: "btn" if @booking.rent_approved %>
         <% end %>
       </div>
     </div>

@@ -23,12 +23,12 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    @booking = Booking.find_by(cloth_id: params[:cloth_id])
+    @booking = Booking.find(params[:id])
     authorize @booking
   end
 
   def update
-    @booking = Booking.find_by(cloth_id: params[:cloth_id])
+    @booking = Booking.find(params[:id])
     authorize @booking
     @booking.update(booking_params)
     set_booking
@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
   end
 
   def approve
-    @booking = Booking.find_by(cloth_id: params[:cloth_id])
+    @booking = Booking.find(params[:id])
     authorize @booking
     @booking.rent_approved = true
     @cloth.rented = true

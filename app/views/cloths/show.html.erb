@@ -78,16 +78,16 @@
 <div class="cloth-reviews h-100">
   <h3 class="text-center"><b>Hear from others</b></h3>
   <% @cloth.bookings.each do |booking| %>
-    <% if booking.review != nil %>
-    <div class="card-review container d-flex">
-        <b><%= booking.rentee.username %></b>comments:<br>
-        <%= booking.review.comments %><br>
-        <% booking.review.rating.to_int.times do %>
-          <i class="fa-solid fa-star"></i>
-        <% end %>
-    </div>
-    <% else %>
+    <% if booking.review.nil? %>
       <p class='text-center'>No reviews yet</p>
+    <% else %>
+      <div class="card-review container d-flex">
+          <b><%= booking.rentee.username %></b>comments:<br>
+          <%= booking.review.comments %><br>
+          <% booking.review.rating.to_int.times do %>
+            <i class="fa-solid fa-star"></i>
+          <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>
