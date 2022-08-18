@@ -6,15 +6,17 @@
 
     <div class="card-cloth-info d-flex flex-column">
       <h2 id="cloth-title"><%= @booking.cloth.title %></h2>
-      <p><%= @booking.rent_duration %> days, $<%= @booking.total_cost %> in total</p>
+      <p>from <%= @booking.start_date %> to <%= @booking.end_date %>, $<%= @booking.total_cost %> in total</p>
       <h4>
         <%= content_tag(:span, "Approved",  class: "badge badge-pill badge-success") if @booking.rent_approved %>
       </h4>
       <div class="d-inline-flex justify-content-center">
-        <%= link_to "Approve", approve_cloth_booking_path(@booking.cloth, @booking), data: {turbo_method: :patch}, class: "btn" if @booking.rent_approved == false %>
+        <% if @booking.rent_approved == false && @booking.cloth.rented == false %>
+          <%= link_to "Approve", approve_cloth_booking_path(@booking.cloth, @booking), data: {turbo_method: :patch}, class: "btn" %>
         <%= link_to "Cancel",
             booking_path(@booking),
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" if @booking.rent_approved == false %>
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" %>
+        <% end %>
       </div>
     </div>
   <% end %>
