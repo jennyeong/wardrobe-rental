@@ -1,12 +1,15 @@
-<div class="card-cloth d-flex flex-column">
+<div class="card-cloth">
   <%= link_to cloth_path(@cloth) do %>
-    <%# <%= cl_image_tag @cloth.photos.first.key, :transformation => {:dpr => "auto", :responsive => true, :width => "auto", :crop => "limit"} %>
     <div class="card-image">
-      <%= cl_image_tag @cloth.photos.first.key, :transformation => {:width => 400, :height => 400, :crop => "pad", :radius => 25} %>
+      <%= cl_image_tag @cloth.photos.first.key, :transformation => {:width => 200, :height => 200, :crop => "lfill"} %>
     </div>
-    <div class="card-cloth-info d-flex flex-column">
-      <h2 id="cloth-title"><%= @cloth.title %> <%= content_tag(:span, "Rented",  class: "badge badge-pill badge-success") if @cloth.rented %></h2>
-      <p id="cloth-description"><%= @cloth.description %></p>
+    <div class="card-cloth-info">
+      <div class="cloth-title">
+        <p id="cloth-title"><%= @cloth.title %> <%= content_tag(:span, "Rented",  class: "badge badge-pill badge-success") if @cloth.rented %></p>
+      </div>
+      <div class="cloth-description">
+        <p id="cloth-description"><%= @cloth.description %></p>
+      </div>
       <div class="card-cloth-bookmark">
         <% if user_signed_in? %>
           <% bookmark = @cloth.bookmarks.find_by(user_id: current_user.id) %>
@@ -16,7 +19,9 @@
             <i class="fa-regular fa-heart"></i>
           <% end %>
         <% end %>
-      </div>
+    </div>
+    </div>
+    <div class="card-cloth-price">
       <p id= "cloth-price">$<%= @cloth.price %>/day</p>
     </div>
   <% end %>
