@@ -7,14 +7,17 @@
     <div class="card-cloth-info d-flex flex-column">
       <h2 id="cloth-title"><%= @cloth.title %> <%= content_tag(:span, "Rented",  class: "badge badge-pill badge-success") if @cloth.rented %></h2>
       <p id="cloth-description"><%= @cloth.description %></p>
+      <div class="card-cloth-bookmark">
+        <% if user_signed_in? %>
+          <% bookmark = @cloth.bookmarks.find_by(user_id: current_user.id) %>
+          <%= render partial: "cloths/bookmark_link", locals: {cloth: @cloth, bookmark: bookmark} %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
+            <i class="fa-regular fa-heart"></i>
+          <% end %>
+        <% end %>
+      </div>
       <p id= "cloth-price">$<%= @cloth.price %>/day</p>
     </div>
-  <% end %>
-  <%# To add bookmark button after bookmark controller is done as need to do if else to show bookmarked already or not %>
-  <% if user_signed_in? %>
-    <% bookmark = @cloth.bookmarks.find_by(user_id: current_user.id) %>
-    <%= render partial: "cloths/bookmark_link", locals: {cloth: @cloth, bookmark: bookmark} %>
-  <% else %>
-    <p class="cloth-bookmark"><%= link_to "Bookmark", new_user_session_path %></p>
   <% end %>
 </div>
