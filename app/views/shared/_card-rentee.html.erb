@@ -1,16 +1,18 @@
-<div class="card-cloth d-flex flex-column">
+<div class="card-cloth">
   <%= link_to cloth_path(@booking.cloth) do %>
     <div class="card-image">
-      <%= cl_image_tag @booking.cloth.photos.first.key, :transformation => {:width => 400, :height => 400, :crop => "pad", :radius => 25} %>
+      <%= cl_image_tag @booking.cloth.photos.first.key, :transformation => {:width => 200, :height => 200, :crop => "lfill"} %>
     </div>
 
-    <div class="card-cloth-info d-flex flex-column">
-      <h2 id="cloth-title"><%= @booking.cloth.title %></h2>
-      <p><%= @booking.start_date.strftime("%d %b, %Y") %> to <%= @booking.end_date.strftime("%d %b, %Y") %>, $<%= @booking.total_cost %> in total</p>
-      <h4>
-      <%= content_tag(:span, "Pending approval",  class: "badge badge-pill badge-primary") if @booking.rent_approved == false && @booking.cloth.rented == false %>
-      <%= content_tag(:span, "Approved",  class: "badge badge-pill badge-success") if @booking.rent_approved %>
-      </h4>
+    <div class="card-cloth-info">
+      <div class="cloth-title">
+        <p id="cloth-title"><%= @booking.cloth.title %></p>
+      </div>
+      <div class="cloth-description">
+        <p id="cloth-description"><%= @booking.start_date.strftime("%d %b, %Y") %> to <%= @booking.end_date.strftime("%d %b, %Y") %> $<%= @booking.total_cost %> in total</p>
+      </div>
+      <%= content_tag(:h4, "Pending approval",  class: "card-image shadow") if @booking.rent_approved == false && @booking.cloth.rented == false %>
+      <%= content_tag(:h4, "Approved",  class: "card-image shadow") if @booking.rent_approved %>
 
       <div class="d-inline-flex justify-content-center">
         <%= link_to "Edit", edit_cloth_booking_path(@booking.cloth, @booking), class: "btn" if @booking.rent_approved == false && @booking.cloth.rented == false %>
