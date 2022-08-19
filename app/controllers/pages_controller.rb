@@ -7,4 +7,10 @@ class PagesController < ApplicationController
     # For Wishlisted
     @cloths_wishlisted = Cloth.where(brand: "Louis Vuitton").limit(3)
   end
+
+  def contact_us
+  end
+
+  def about_us
+  end
 end
