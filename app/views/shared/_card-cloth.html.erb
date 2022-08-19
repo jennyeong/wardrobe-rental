@@ -2,15 +2,8 @@
   <%= link_to cloth_path(@cloth) do %>
     <div class="card-image">
       <%= cl_image_tag @cloth.photos.first.key, :transformation => {:width => 200, :height => 200, :crop => "lfill"} %>
-    </div>
-    <div class="card-cloth-info">
-      <div class="cloth-title">
-        <p id="cloth-title"><%= @cloth.title %> <%= content_tag(:span, "Rented",  class: "badge badge-pill badge-success") if @cloth.rented %></p>
-      </div>
-      <div class="cloth-description">
-        <p id="cloth-description"><%= @cloth.description %></p>
-      </div>
-      <div class="card-cloth-bookmark">
+      <%= content_tag(:h4, "Rented",  class: "card-image shadow") if @cloth.rented %>
+      <div class="card-image card-cloth-bookmark">
         <% if user_signed_in? %>
           <% bookmark = @cloth.bookmarks.find_by(user_id: current_user.id) %>
           <%= render partial: "cloths/bookmark_link", locals: {cloth: @cloth, bookmark: bookmark} %>
@@ -19,7 +12,15 @@
             <i class="fa-regular fa-heart"></i>
           <% end %>
         <% end %>
+      </div>
     </div>
+    <div class="card-cloth-info">
+      <div class="cloth-title">
+        <p id="cloth-title"><%= @cloth.title %></p>
+      </div>
+      <div class="cloth-description">
+        <p id="cloth-description"><%= @cloth.description %></p>
+      </div>
     </div>
     <div class="card-cloth-price">
       <p id= "cloth-price">$<%= @cloth.price %>/day</p>

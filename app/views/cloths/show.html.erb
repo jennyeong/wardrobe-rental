@@ -9,7 +9,7 @@
 
   <div class="column">
     <div class="row">
-      <h2><%= @cloth.title %> <%= content_tag(:span, "Rented",  class: "badge badge-pill badge-success") if @cloth.rented %></h2>
+      <h2><%= @cloth.title %></h2>
     </div>
 
     <div class="row">
@@ -40,6 +40,7 @@
       <div class="detail-booking">
         <h3>$<%= @cloth.price %>/day</h3>
         <%= link_to 'Rent this cloth', new_cloth_booking_path(@cloth), class: "btn btn-ghost" if @rentee && @cloth.rented == false %>
+        <%= content_tag(:span, "Rented",  class: "badge badge-dark badge-xl") if @cloth.rented %>
       </div>
     </div>
 
@@ -99,12 +100,16 @@
 
   <% if @cloth.bookings.present? %>
     <% @cloth.bookings.each do |booking| %>
-      <div class="card-review container d-flex">
-        <p><% booking.review.rating.to_int.times do %>
-          <i class="fa-solid fa-star"></i>
-        <% end %></p>
-        <p><b><%= booking.rentee.username %></b> comments:</p>
-        <p><%= booking.review.comments %></p>
+      <div class="card-review container px-5 d-flex">
+        <% if booking.review.present? %>
+          <p><% booking.review.rating.to_int.times do %>
+            <i class="fa-solid fa-star"></i>
+          <% end %></p>
+          <p><b><%= booking.rentee.username %></b> comments:</p>
+          <p><%= booking.review.comments %></p>
+        <% else %>
+          <p class='text-center'>No reviews yet</p>
+        <% end %>
       </div>
     <% end %>
   <% else %>
