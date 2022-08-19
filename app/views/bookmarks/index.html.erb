@@ -1,11 +1,12 @@
 <div class="mx-0 px-0 text-center my-5 w-100">
-  <div class="drops text-center bg-light p-3 pb-0 m-0">
-    <h3 class="m-0"><b>My bookmarks</b></h3>
-    <ul>
-      <% @bookmarks.each do |bookmark| %>
-        <li><%= link_to bookmark.cloth.title, bookmark.cloth %></li>
-      <% end %>
-    </ul>
-  </div>
-  <hr style="width:80%; margin-left:10% !important; margin-right:10% !important;" />
+  <h1><b>Bookmarks</b></h1>
+  <br>
+</div>
+<div class="bookmarks text-center bg-light p-3 pb-0 m-0">
+  <% @bookmarks.each do |bookmark| %>
+    <% @cloth = bookmark.cloth %>
+    <div class="d-inline-flex justify-content-between">
+      <%= render "shared/card-cloth", object: @cloth %>
+    </div>
+  <% end %>
 </div>
