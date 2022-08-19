@@ -7,6 +7,7 @@ h1, h2, h3, h4, h5 {
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 
   .column {
 
@@ -15,12 +16,11 @@ h1, h2, h3, h4, h5 {
       justify-content: space-between;
       align-items: center;
       padding: 5px;
-      margin: auto;
 
       h2 {
         font-size: 50px;
         font-weight: bold;
-        padding: 25px 12px;
+        padding: 25px 12px 0 12px;
       }
 
       p {
@@ -43,9 +43,38 @@ h1, h2, h3, h4, h5 {
         }
       }
 
+      .detail-description {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .card-cloth-bookmark {
+          position: absolute;
+          right: 100px;
+          font-size: x-large;
+        }
+      }
+
+      .detail-booking {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 95%;
+        margin: 5px auto;
+        padding: 0 15px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 1rem;
+        padding: 20px;
+
+        .btn {
+          margin: 0;
+        }
+      }
+
       .detail-card {
-        border: 1px solid black;
-        border-radius: 10px;
+        border: 1px solid white;
+        background-color: white;
+        border-radius: 1rem;
         width: 45%;
         text-align: center;
         margin: 5px auto;
@@ -57,10 +86,12 @@ h1, h2, h3, h4, h5 {
       }
 
       .date-card {
-        border: 1px solid black;
-        border-radius: 10px;
+        border: 1px solid white;
+        background-color: white;
+        border-radius: 1rem;
+        width: 95%;
         text-align: center;
-        margin: 10px auto;
+        margin: 5px auto;
         padding: 5px;
 
         .date-type {
@@ -79,13 +110,18 @@ h1, h2, h3, h4, h5 {
         height: auto;
       }
     }
-
-    .booking {
-      border: 1px solid rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
-    }
   }
   .btn {
     margin: 20px 0px;
+  }
+}
+
+.card-review {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  p {
+    margin-bottom: 0;
   }
 }

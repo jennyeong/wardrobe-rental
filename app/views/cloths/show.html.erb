@@ -10,13 +10,36 @@
   <div class="column">
     <div class="row">
       <h2><%= @cloth.title %> <%= content_tag(:span, "Rented",  class: "badge badge-pill badge-success") if @cloth.rented %></h2>
-      <p><%= @cloth.description %></p>
     </div>
+
+    <div class="row">
+      <div class="detail-description">
+        <p><%= @cloth.description %></p>
+        <div class="card-cloth-bookmark">
+          <% if user_signed_in? %>
+            <% bookmark = @cloth.bookmarks.find_by(user_id: current_user.id) %>
+            <%= render partial: "cloths/bookmark_link", locals: {cloth: @cloth, bookmark: bookmark} %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+              <i class="fa-regular fa-heart"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
 
     <div class="row">
       <div class="detail-avatar">
         <img src="https://source.unsplash.com/random/100x100" class="avatar" alt="Avatar">
         <p>by <%= @cloth.user.username %></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="detail-booking">
+        <h3>$<%= @cloth.price %>/day</h3>
+        <%= link_to 'Rent this cloth', new_cloth_booking_path(@cloth), class: "btn btn-ghost" if @rentee && @cloth.rented == false %>
       </div>
     </div>
 
@@ -53,10 +76,6 @@
           <span><%= @cloth.category %></span>
         </div>
       </div>
-    </div>
-
-    <div class="row booking">
-      <h3>$<%= @cloth.price %>/day</h3>
       <div class="date-card">
         <div class="date-type">
           <span>Available Period</span>
@@ -66,10 +85,10 @@
         </div>
       </div>
     </div>
+
     <div>
       <%= link_to 'Edit this cloth', edit_cloth_path(@cloth), class: "btn btn-ghost" if policy(@cloth).edit? && @cloth.rented == false %>
       <%= link_to 'Delete this cloth', cloth_path(@cloth), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-ghost" if policy(@cloth).destroy? && @cloth.rented == false %>
-      <%= link_to 'Rent this cloth', new_cloth_booking_path(@cloth), class: "btn btn-ghost" if @rentee && @cloth.rented == false %>
     </div>
   </div>
 </div>
@@ -77,18 +96,19 @@
  <hr style="width:80%; margin-left:10% !important; margin-right:10% !important;" />
 <div class="cloth-reviews h-100">
   <h3 class="text-center"><b>Hear from others</b></h3>
-  <% @cloth.bookings.each do |booking| %>
-    <% if booking.review.nil? %>
-      <p class='text-center'>No reviews yet</p>
-    <% else %>
+
+  <% if @cloth.bookings.present? %>
+    <% @cloth.bookings.each do |booking| %>
       <div class="card-review container d-flex">
-          <b><%= booking.rentee.username %></b>comments:<br>
-          <%= booking.review.comments %><br>
-          <% booking.review.rating.to_int.times do %>
-            <i class="fa-solid fa-star"></i>
-          <% end %>
+        <p><% booking.review.rating.to_int.times do %>
+          <i class="fa-solid fa-star"></i>
+        <% end %></p>
+        <p><b><%= booking.rentee.username %></b> comments:</p>
+        <p><%= booking.review.comments %></p>
       </div>
     <% end %>
+  <% else %>
+    <p class='text-center'>No reviews yet</p>
   <% end %>
 </div>
 
