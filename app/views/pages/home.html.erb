@@ -1,14 +1,15 @@
 <div class="mx-0 px-0 text-center my-5 w-100">
   <h1><b>Welcome to Wardrobe</b></h1>
-  <h5>Your one stop rental platform</h3>
+  <h5>Learn how to rent, lend and more.</h3>
   <br>
   <%= form_tag "/cloths", method: "GET" do %>
     <%= text_field_tag :search_outfits, params[:search_outfits] %>
     <%= submit_tag "Get outfitted today!" %>
   <% end %>
 </div>
+
 <div class="drops text-center bg-light p-3 pb-0 m-0">
-  <h3 class="m-0"><b>Drops</b></h3>
+  <h2 class="m-3"><b>Latest Drops</b></h2>
   <% @cloths.each do |cloth| %>
     <% @cloth = cloth %>
     <div class="d-inline-flex justify-content-between">
@@ -17,7 +18,7 @@
   <% end %>
 </div>
 <div class="most-wishlisted text-center p-3 bg-light pb-0 m-0">
-  <h3 class="m-0"><b>Most Wishlisted</b></h3>
+  <h2 class="m-3"><b>Most Wishlisted</b></h2>
   <% @cloths_wishlisted.each do |cloth| %>
     <% @cloth = cloth %>
     <div class="d-inline-flex justify-content-between">

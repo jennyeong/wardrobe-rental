@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     # For Drops
-    @cloths = Cloth.all.limit(3)
+    @cloths = Cloth.last(5)
     # For Wishlisted
     @cloths_wishlisted = Cloth.where(brand: "Louis Vuitton").limit(3)
   end
