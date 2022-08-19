@@ -1,4 +1,4 @@
-<%= tag.div id: dom_id(@cloth) do %>
+<%= tag.div id: dom_id(@cloth), class: "bookmark-link-container" do %>
   <% if bookmark.nil? %>
     <%= link_to cloth_bookmarks_path(cloth_id: cloth.id), data: {turbo_method: :post} do %>
       <i class="fa-regular fa-heart"></i>
