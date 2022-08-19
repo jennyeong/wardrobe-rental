@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     set_booking
     authorize @booking
     if @booking.save
-      redirect_to bookings_path, notice: "Rent request was successfully created."
+      redirect_to bookings_path, notice: "Renting request was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
     @booking.update(booking_params)
     set_booking
     if @booking.save
-      redirect_to bookings_path, notice: "Rent request was successfully updated."
+      redirect_to bookings_path, notice: "Renting request was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,7 +45,7 @@ class BookingsController < ApplicationController
     @booking.rent_approved = true
     @cloth.rented = true
     if @booking.save && @cloth.save
-      redirect_to bookings_path, notice: "Rent request was successfully approved."
+      redirect_to bookings_path, notice: "Renting request was successfully approved."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -55,7 +55,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
     @booking.destroy
-    redirect_to bookings_path, status: :see_other, notice: "Rent request was successfully deleted."
+    redirect_to bookings_path, status: :see_other, notice: "Renting request was successfully deleted."
   end
 
   private

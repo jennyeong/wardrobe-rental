@@ -1,3 +1,11 @@
-<h3>Create a new rent request</h3>
+<div class="my-3 px-3 login-container">
+  <div class="login d-flex justify-content-center">
+    <div><%= cl_image_tag @cloth.photos.first.key %></div>
+      <div class="login-form">
+        <h3>Create a new renting request</h3>
 
-<%= render "bookingform", cloth: @cloth, booking: @booking %>
+        <%= render "bookingform", cloth: @cloth, booking: @booking %>
+      </div>
+    </div>
+  </div>
+</div>

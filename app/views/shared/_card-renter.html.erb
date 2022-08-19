@@ -6,7 +6,7 @@
 
     <div class="card-cloth-info d-flex flex-column">
       <h2 id="cloth-title"><%= @booking.cloth.title %></h2>
-      <p>from <%= @booking.start_date %> to <%= @booking.end_date %>, $<%= @booking.total_cost %> in total</p>
+      <p><%= @booking.start_date.strftime("%d %b, %Y") %> to <%= @booking.end_date.strftime("%d %b, %Y") %>, $<%= @booking.total_cost %> in total</p>
       <h4>
         <%= content_tag(:span, "Approved",  class: "badge badge-pill badge-success") if @booking.rent_approved %>
       </h4>
