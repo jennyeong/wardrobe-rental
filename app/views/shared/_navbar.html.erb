@@ -27,10 +27,10 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item mr-3 align-middle pt-2" title="Bookmarks">
-            <%= link_to ('<i class="fa-solid fa-heart fa-xl"></i>').html_safe, bookmarks_path  %>
+            <%= link_to ('<i class="fa-regular fa-heart fa-xl"></i>').html_safe, bookmarks_path  %>
           </li>
           <li class="nav-item mr-3 align-middle pt-2">
-            <%= link_to ('<i class="fa-solid fa-magnifying-glass fa-xl"></i>').html_safe, cloths_path  %>
+            <%= link_to ('<i class="fa-regular fa-magnifying-glass fa-xl"></i>').html_safe, cloths_path  %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://source.unsplash.com/random/100x100", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
