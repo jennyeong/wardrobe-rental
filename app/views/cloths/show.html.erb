@@ -62,7 +62,7 @@
           <span>Available Period</span>
         </div>
         <div class="date-value">
-          <p>From <%= @cloth.start_date %> to <%= @cloth.end_date %></p>
+          <p>From <%= @cloth.start_date.strftime("%d %b, %Y") %> to <%= @cloth.end_date.strftime("%d %b, %Y") %></p>
         </div>
       </div>
     </div>
