@@ -1,9 +1,7 @@
 .card-cloth {
-  // border-style: solid;
   border-radius: 1rem;
   width: 12.8rem;
   height: 20rem;
-  // padding: 1rem;
   margin: 1rem;
   background-color: white;
   align-items: center;
@@ -30,7 +28,6 @@ a:hover {
 #cloth-title {
   color: black;
   font-weight: bold;
-  // padding: 1rem;
   margin: 0;
   font-size: large;
   height: 27px;
@@ -53,12 +50,9 @@ a:hover {
 
 #cloth-price {
   color: rgb(69, 68, 68);
-  // text-decoration: solid;
   font-size: small;
   font-weight: bold;
   margin: 0;
-  // padding: 0.5rem;
-  // align-self: flex-end;
 }
 
 // .bookmark-link-container {
@@ -90,5 +84,11 @@ a:hover {
   }
   i {
     color: black;
+  }
+}
+
+.card-cloth:hover {
+  img {
+    opacity:0.5;
   }
 }
