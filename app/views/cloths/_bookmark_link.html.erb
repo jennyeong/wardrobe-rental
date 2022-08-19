@@ -1,7 +1,11 @@
 <%= tag.div id: dom_id(@cloth) do %>
   <% if bookmark.nil? %>
-    <p class="cloth-bookmark"><%= link_to "Bookmark", cloth_bookmarks_path(cloth_id: cloth.id), data: {turbo_method: :post} %></p>
+    <%= link_to cloth_bookmarks_path(cloth_id: cloth.id), data: {turbo_method: :post} do %>
+      <i class="fa-regular fa-heart"></i>
+    <% end %>
   <% else %>
-    <p class="cloth-bookmark"><%= link_to "Remove Bookmark", bookmark_path(bookmark), data: {turbo_method: :delete} %></p>
+    <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete} do %>
+      <i class="fa-solid fa-heart"></i>
+    <% end %>
   <% end %>
 <% end %>

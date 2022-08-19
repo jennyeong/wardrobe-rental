@@ -2,7 +2,7 @@
   <div class="login d-flex justify-content-center">
     <div><%= cl_image_tag @cloth.photos.first.key %></div>
       <div class="login-form">
-        <h3>Create a new renting request</h3>
+        <h3 class="p-1">New renting request</h3>
 
         <%= render "bookingform", cloth: @cloth, booking: @booking %>
       </div>
