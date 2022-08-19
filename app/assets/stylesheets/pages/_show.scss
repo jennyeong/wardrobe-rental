@@ -44,13 +44,15 @@ h1, h2, h3, h4, h5 {
       }
 
       .detail-description {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
         .card-cloth-bookmark {
           position: absolute;
-          right: 100px;
+          top: -60px;
+          right: 10px;
           font-size: x-large;
         }
       }

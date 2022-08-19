@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-  @review.booking = @booking
+    @review.booking = @booking
     authorize @review
     if @review.save
       redirect_to cloth_path(@booking.cloth), notice: "Thank you for your review."
@@ -37,7 +37,6 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     authorize @review
     @review.destroy
-    raise
     redirect_to cloth_path(@booking.cloth), status: :see_other
   end
 
