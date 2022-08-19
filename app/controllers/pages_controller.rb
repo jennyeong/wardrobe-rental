@@ -3,9 +3,9 @@ class PagesController < ApplicationController
 
   def home
     # For Drops
-    @cloths = Cloth.last(5)
+    @cloths = Cloth.where(rented: false).last(5)
     # For Wishlisted
-    @cloths_wishlisted = Cloth.where(brand: "Louis Vuitton").limit(3)
+    @cloths_wishlisted = Cloth.where(rented: false, brand: "Louis Vuitton").limit(3)
   end
 
   def contact_us
