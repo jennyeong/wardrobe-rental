@@ -1,8 +1,25 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<div class="new-review-form">
+  <div class="new-review-title">
+    <h1 class="p-3 text-center">Share your feedback</h1>
+  </div>
 
-<%= render "reviewform", review: @review %>
-
-
-
-<p><%= link_to "Back", cloths_path %></p>
+  <div class="new-cloth-info">
+    <div class="new-cloth-info-title">
+      <p><%= @booking.cloth.title %></p>
+    </div>
+    <div class="new-cloth-info-rented-period">
+      <p>Rented Period</p>
+      <p><%= @booking.start_date %> to <%= @booking.end_date %></p>
+    </div>
+    <div class="new-cloth-info-price">
+      <p>Total price</p>
+      <p>$<%= @booking.total_cost %></p>
+    </div>
+    <div class="new-cloth-info-picture">
+      <p><%= cl_image_tag @booking.cloth.photos.first.key, :transformation => {:width => 300, :height => 300, :crop => "lfill"} %></p>
+    </div>
+    <div class="new-cloth-info-review">
+      <%= render 'reviewform' %>
+    </div>
+  </div>
+</div>

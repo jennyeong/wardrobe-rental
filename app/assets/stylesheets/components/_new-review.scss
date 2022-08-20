@@ -1,0 +1,40 @@
+.new-review-form {
+  padding: 3rem;
+  padding-top: 0;
+}
+
+.new-review-title {
+  margin: 1rem;
+
+}
+
+.new-cloth-info {
+  background-color: white;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.new-cloth-info-title {
+  font-size: larger;
+  font-weight: bold;
+}
+.new-cloth-info-rented-period {
+  display: flex;
+  justify-content: space-between;
+  width: 25rem;
+}
+
+.new-cloth-info-price {
+  display: flex;
+  justify-content: space-between;
+  width: 14.4rem;
+}
+
+.new-cloth-info-review {
+  margin-top: 2rem;
+}
+.new-cloth-info-picture {
+  position: relative;
+  // left: 30rem;
+  // bottom: 5rem;
+}
