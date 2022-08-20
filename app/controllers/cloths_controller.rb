@@ -1,8 +1,22 @@
 class ClothsController < ApplicationController
   before_action :set_cloth, only: %i[show edit update destroy]
   def index
-    @cloths = Cloth.all
+    # @cloths = Cloth.all
+    # @cloths = policy_scope(Cloth)
     @cloths = policy_scope(Cloth)
+    @cloths = Cloth.all
+    if params[:search_outfits].present?
+      # sql_query = "title ILIKE :search_outfits"
+      # @cloths = Cloth.where(sql_query, search_outfits: "%#{params[:search_outfits]}%")
+
+      @cloths = Cloth.search_by_title_and_description(params[:search_outfits])
+      # raise
+      # @cloths = Cloth.where(title: params[:search_outfits])
+    # else
+    #   @cloths = Cloth.all
+    end
+
+    # raise
   end
 
   def show
@@ -46,6 +60,14 @@ class ClothsController < ApplicationController
     authorize @cloth
     @cloth.destroy
     redirect_to cloths_path, status: :see_other, notice: "Cloth was successfully deleted."
+  end
+
+  def mycloset
+    @cloths = Cloth.all
+    @cloths = policy_scope(Cloth)
+
+    # @cloths = Cloth.where(user_id: current_user.id)
+    # authorize @cloths
   end
 
   private

@@ -1,0 +1,15 @@
+<div class="mx-0 px-0 text-center my-5 w-100">
+  <%= form_tag "/cloths", method: "GET" do %>
+    <%= text_field_tag :search_outfits, params[:search_outfits] %>
+    <%= submit_tag "Get outfitted today!" %>
+  <% end %>
+</div>
+
+<div class="text-center">
+  <% @cloths.each do |cloth| %>
+    <% @cloth = cloth %>
+    <div class="d-inline-flex justify-content-between">
+      <%= render "shared/card-cloth", object: @cloth %>
+    </div>
+  <% end %>
+</div>

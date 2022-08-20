@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:destroy]
 
+  get "/mycloset", to: "cloths#mycloset", as: :mycloset
   patch "cloths/:cloth_id/bookings/:id/approve", to: "bookings#approve", as: :approve_cloth_booking
   get "/contact-us", to: "pages#contact_us"
   get "/about-us", to: "pages#about_us"

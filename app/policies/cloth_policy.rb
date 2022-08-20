@@ -3,6 +3,7 @@ class ClothPolicy < ApplicationPolicy
     # NOTE: Be explicit about which records you allow access to!
     def resolve
       scope.where(user_id: user.id).order(updated_at: :desc)
+      # scope.all
     end
   end
 
@@ -23,4 +24,9 @@ class ClothPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  # def mycloset?
+  #   # scope.where(user_id: user.id).order(updated_at: :desc)
+  #   record.user == user
+  # end
 end
