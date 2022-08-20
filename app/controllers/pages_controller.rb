@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     # end
     # @cloths_wishlisted = @cloths_wishlisted.first(5)
     @cloths_wishlisted = Cloth.select('cloths.*, COUNT(bookmarks.user_id) AS bookmark_count')
+                              .where(rented: false)
                               .joins(:bookmarks)
                               .group('cloths.id')
                               .order('bookmark_count DESC')
