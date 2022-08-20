@@ -5,7 +5,12 @@ class PagesController < ApplicationController
     # For Drops
     @cloths = Cloth.where(rented: false).last(5)
     # For Wishlisted
-    @cloths_wishlisted = Cloth.where(rented: false, brand: "Louis Vuitton").limit(3)
+    # @cloths_wishlisted = Cloth.where(rented: false, brand: "Louis Vuitton").limit(3)
+    @cloths_wishlisted = []
+    Bookmark.all.each do |bookmark|
+      @cloths_wishlisted << bookmark.cloth
+    end
+    @cloths_wishlisted = @cloths_wishlisted.first(5)
   end
 
   def contact_us
