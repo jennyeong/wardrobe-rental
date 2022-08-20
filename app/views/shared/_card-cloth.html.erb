@@ -16,10 +16,20 @@
     </div>
     <div class="card-cloth-info">
       <div class="cloth-title">
-        <p id="cloth-title"><%= @cloth.title %></p>
+        <% if @cloth.title.length <= 12  %>
+          <p id="cloth-title"><%= @cloth.title %></p>
+          <% else %>
+            <% @cloth.title[13..-1] = "..." %>
+            <p id="cloth-title"><%= @cloth.title %></p>
+          <% end %>
       </div>
       <div class="cloth-description">
-        <p id="cloth-description"><%= @cloth.description %></p>
+        <% if @cloth.description.length <= 70  %>
+          <p id="cloth-description"><%= @cloth.description %></p>
+        <% else %>
+          <% @cloth.description[71..-1] = "..." %>
+          <p id="cloth-description"><%= @cloth.description %></p>
+        <% end %>
       </div>
     </div>
     <div class="card-cloth-price">
