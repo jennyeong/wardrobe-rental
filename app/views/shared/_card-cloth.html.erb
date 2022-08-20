@@ -3,7 +3,7 @@
     <div class="card-image">
       <%= cl_image_tag @cloth.photos.first.key, :transformation => {:width => 200, :height => 200, :crop => "lfill"} %>
       <%= content_tag(:h4, "Rented",  class: "card-image shadow") if @cloth.rented %>
-      <div class="card-image card-cloth-bookmark">
+      <div class="card-image card-cloth-bookmark" data-controller="click">
         <% if user_signed_in? %>
           <% bookmark = @cloth.bookmarks.find_by(user_id: current_user.id) %>
           <%= render partial: "cloths/bookmark_link", locals: {cloth: @cloth, bookmark: bookmark} %>
