@@ -10,7 +10,7 @@
         <p id="cloth-title"><%= @booking.cloth.title %></p>
       </div>
       <div class="cloth-description">
-        <p id="cloth-description"><%= @booking.start_date.strftime("%d %b, %Y") %> to <%= @booking.end_date.strftime("%d %b, %Y") %> $<%= @booking.total_cost %> in total</p>
+        <p id="cloth-description"><%= @booking.start_date.strftime("%d %b, %Y") %> to <%= @booking.end_date.strftime("%d %b, %Y") %> $<%= @booking.total_cost.to_i %> in total</p>
       </div>
       <h4>
       </h4>
