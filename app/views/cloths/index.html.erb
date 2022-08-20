@@ -5,11 +5,15 @@
   <% end %>
 </div>
 
-<div class="text-center">
-  <% @cloths.each do |cloth| %>
-    <% @cloth = cloth %>
-    <div class="d-inline-flex justify-content-between">
-      <%= render "shared/card-cloth", object: @cloth %>
-    </div>
-  <% end %>
-</div>
+<% if @cloths.present? %>
+  <div class="text-center">
+    <% @cloths.each do |cloth| %>
+      <% @cloth = cloth %>
+      <div class="d-inline-flex justify-content-between">
+        <%= render "shared/card-cloth", object: @cloth %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <h2 class="text-center"> No results found. </h2>
+<% end %>
