@@ -11,10 +11,10 @@
     <div class="collapse navbar-collapse me-auto" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <%= link_to "Suits", "#", class: "nav-link" %>
+            <%= link_to "Suits", "/cloths?search_outfits=suits", method: :get, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Office", "#", class: "nav-link" %>
+            <%= link_to "Office", "/cloths?search_outfits=office", class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Post your closet", "/cloths/new", class: "nav-link text-danger" %>
