@@ -15,7 +15,6 @@ class BookmarksController < ApplicationController
   def destroy
     @cloth = @bookmark.cloth
     @bookmark.destroy
-    redirect_to bookmarks_path, status: :see_other, notice: "Bookmark was successfully removed."
   end
 
   private
