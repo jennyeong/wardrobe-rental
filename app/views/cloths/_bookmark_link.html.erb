@@ -5,7 +5,7 @@
     <% end %>
   <% else %>
     <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete} do %>
-      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-heart" data-action="click->click#refresh"></i>
     <% end %>
   <% end %>
 <% end %>
