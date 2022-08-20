@@ -1,3 +1,25 @@
-<h1>This is for editing reviews</h1>
+<div class="review-form">
+  <div class="review-title">
+    <h1 class="p-3 text-center">Share your feedback</h1>
+  </div>
 
-<%= render 'reviewform' %>
+  <div class="cloth-info">
+    <div class="cloth-info-title">
+      <p><%= @booking.cloth.title %></p>
+    </div>
+    <div class="cloth-info-rented-period">
+      <p>Rented Period</p>
+      <p><%= @booking.start_date %> to <%= @booking.end_date %></p>
+    </div>
+    <div class="cloth-info-price">
+      <p>Total price</p>
+      <p>$<%= @booking.total_cost %></p>
+    </div>
+    <div class="cloth-info-picture">
+      <p><%= cl_image_tag @booking.cloth.photos.first.key, :transformation => {:width => 300, :height => 300, :crop => "lfill"} %></p>
+    </div>
+    <div class="cloth-info-review">
+      <%= render 'reviewform' %>
+    </div>
+  </div>
+</div>
