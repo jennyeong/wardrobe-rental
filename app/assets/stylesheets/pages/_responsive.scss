@@ -8,4 +8,13 @@
   .container.sign-up {
     width: auto !important;
   }
+  .section {
+    display: none !important;
+  }
+}
+
+@media(max-width:476px){
+  .login-form {
+    padding:0px !important;
+  }
 }
