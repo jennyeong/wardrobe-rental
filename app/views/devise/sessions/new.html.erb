@@ -3,7 +3,7 @@
     <div class="login-image w-50"></div>
 
     <div class="login-form w-50">
-      <h1>Welcome back!</h1>
+      <h1 class="text-nowrap">Welcome back!</h1>
       <p>New clothes await you.</p>
 
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
